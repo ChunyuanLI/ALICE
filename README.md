@@ -36,6 +36,7 @@ TODO
 ### MNIST
 ### CIFAR
 ### CelebA
+### Car2Car
 ### Edge2Shoes
 
 
