@@ -34,7 +34,7 @@ One may tune the weighting hyperparameters of CE regularizers (cycle-consistency
 
 TODO
 ### MNIST
-### CIFAE
+### CIFAR
 ### CelebA
 ### Edge2Shoes
 
