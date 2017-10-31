@@ -13,12 +13,12 @@ Adversarially Learned Inference with Conditional Entropy (**ALICE**)
 
 ## Toy dataset
 
-In unsupervised learning case, the setting of z ~ 1-GMM and x ~ 5-GMM is considered, two variants of ALICE are proposed to bound the conditional entropies, inclduing 
+In *unsupervised learning* case, the setting of z ~ 1-GMM and x ~ 5-GMM is considered, two variants of ALICE are proposed to bound the conditional entropies, inclduing 
 
 - (a) Explicitly specified L2-norm cycle-consistency (`ALICE_l2.py`) 
 - (b) Implicitly learned cycle-consistency via adversarial training (`ALICE_A.py`).
 
-In weakly-supervised learning case, the setting of z ~ 2-GMM and x ~ 5-GMM is considered, we only provide correspondences from 5 pairs of (x,z). Two variants of ALICE are proposed to leverage the supervised information, including 
+In *weakly-supervised learning* case, the setting of z ~ 2-GMM and x ~ 5-GMM is considered, we only provide correspondences from 5 pairs of (x,z) of inverse spatial location relation. Two variants of ALICE are proposed to leverage the supervised information, including 
 
 - (c) Explicitly specified L2-norm mapping  (`ALICE_l2_l2.py`) 
 - (d) Implicitly learned mapping via adversarial training (`ALICE_A_A.py`) 
@@ -29,9 +29,16 @@ In weakly-supervised learning case, the setting of z ~ 2-GMM and x ~ 5-GMM is co
     
 One may tune the weighting hyperparameters of CE regularizers (cycle-consistency and/or supervised mappings) for better performance. Note that ALICE reduces to ALI when the weighting hyperparameters are 0.
 
+
 ## Real datasets
 
 TODO
+### MNIST
+### CIFAR
+### CelebA
+### Car2Car
+### Edge2Shoes
+
 
 ## Citation
 If you use this code for your research, please cite our [paper](https://arxiv.org/abs/1709.01215):
