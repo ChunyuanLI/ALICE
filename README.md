@@ -24,7 +24,7 @@ In weakly-supervised learning case, the setting of z ~ 2-GMM and x ~ 5-GMM is co
 - (d) Implicitly learned mapping via adversarial training (`ALICE_A_A.py`) 
 
  
- <img src="/toy_data/results/toy_data_results.png" width="800px" />
+ <img src="/toy_data/results/toy_data_results.png" width="700px" />
  
     
 One may tune the weighting hyperparameters of CE regularizers (cycle-consistency and/or supervised mappings) for better performance. Note that ALICE reduces to ALI when the weighting hyperparameters are 0.
