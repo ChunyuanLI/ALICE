@@ -1,3 +1,5 @@
 *.pdf
 *.pptx
 *.pyc
+./toy_data/utils_toy/*.pyc
+./toy_data/utils_toy/__pycache__
