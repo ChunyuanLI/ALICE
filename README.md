@@ -1,5 +1,7 @@
 # ALICE
-Adversarially Learned Inference with Conditional Entropy (ALICE)
+Adversarially Learned Inference with Conditional Entropy (**ALICE**)
+
+## Toy dataset
 
 In unsupervised learning case, two variants of ALICE are proposed to bound the conditional entropies, inclduing 
 
@@ -17,6 +19,9 @@ In weakly-supervised learning case, we only have correspondences from 5 pairs of
     
 One may tune the weighting hyperparameters <img src="https://latex.codecogs.com/gif.latex?$\lambda$" /> for the reconstruction terms for better performance. Note that ALICE reduces to ALI when <img src="https://latex.codecogs.com/gif.latex?$\lambda=0$" />.
 
+## Real datasets
+
+TODO
 
 ## Citation
 If you use this code for your research, please cite our [paper](https://arxiv.org/abs/1709.01215):
