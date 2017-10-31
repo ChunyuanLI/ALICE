@@ -23,8 +23,12 @@ In *weakly-supervised learning* case, the setting of z ~ 2-GMM and x ~ 5-GMM is 
 - (c) Explicitly specified L2-norm mapping  (`ALICE_l2_l2.py`) 
 - (d) Implicitly learned mapping via adversarial training (`ALICE_A_A.py`) 
 
- 
- <img src="/toy_data/results/toy_data_results.png" width="700px" />
+ (a) Explicit Cycle-Consistenty  |  (b) Implicit Cycle-Consistenty  
+:-------------------------:|:-------------------------:
+![](/toy_data/results/l2_results.png)  |  ![](/toy_data/results/A_results.png)
+ (b) Explicit Mapping  |  (d) Implicit Mapping
+:-------------------------:|:-------------------------:
+![](/toy_data/results/l2_l2_results.png)  |  ![](/toy_data/results/A_A_results.png)
  
     
 One may tune the weighting hyperparameters of CE regularizers (cycle-consistency and/or supervised mappings) for better performance. Note that ALICE reduces to ALI when the weighting hyperparameters are 0.
