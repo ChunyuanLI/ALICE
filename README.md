@@ -31,7 +31,7 @@ One may tune the weighting hyperparameters of CE regularizers (cycle-consistency
 
 ## Reproduce figures in the paper
 
-`alice_plots.ipynb`
+`plot_generation/alice_plots.ipynb`
 
 ## Real datasets
 
