@@ -19,7 +19,7 @@ One may tune the weighting hyperparameters <img src="https://latex.codecogs.com/
 
 
 ## Citation
-If you use this code for your research, please cite our [paper](https://junyanz.github.io/CycleGAN/):
+If you use this code for your research, please cite our [paper](https://arxiv.org/abs/1709.01215):
 
 ```
 @article{li2017alice,
