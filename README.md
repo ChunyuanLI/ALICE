@@ -7,7 +7,7 @@ Adversarially Learned Inference with Conditional Entropy (**ALICE**)
  [Changyou Chen](https://www.cse.buffalo.edu/~changyou/), 
  [Yunchen Pu](https://scholar.google.com/citations?user=ftW7RoAAAAAJ&hl=en), 
  [Liqun Chen](https://scholar.google.com/citations?user=T9T8Il0AAAAJ&hl=en), 
- [Ricardo Henao](https://scholar.google.com/citations?user=p_mm4-YAAAAJ),   
+ [Ricardo Henao](https://scholar.google.com/citations?user=p_mm4-YAAAAJ),
  [Lawrence Carin](http://people.ee.duke.edu/~lcarin/)  
  Duke University. NIPS, 2017.
 
