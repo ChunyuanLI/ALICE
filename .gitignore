@@ -1,5 +1,6 @@
 *.pdf
 *.pptx
+.DS_Store
 *.pyc
 ./toy_data/utils_toy/*.pyc
 ./toy_data/utils_toy/__pycache__
