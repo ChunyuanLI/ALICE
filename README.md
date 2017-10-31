@@ -12,7 +12,7 @@ In weakly-supervised learning case, we only have correspondences from 5 pairs of
 - Implicitly learned mapping via adversarial training (`ALICE_A_A.py`) 
 
  
- <img src="/toy_data/results/toy_data_results.png" data-canonical-src="/toy_data/results/toy_data_results.png" width="800" height="500" />
+ <img src="/toy_data/results/toy_data_results.png" width="1000px" />
  
     
 One may tune the weighting hyperparameters <img src="https://latex.codecogs.com/gif.latex?$\lambda$" /> for the reconstruction terms for better performance. Note that ALICE reduces to ALI when <img src="https://latex.codecogs.com/gif.latex?$\lambda=0$" />.
