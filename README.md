@@ -25,7 +25,7 @@ In *weakly-supervised learning* case, the setting of z ~ 2-GMM and x ~ 5-GMM is 
 
  (a) Explicit Cycle-Consistenty  |  (b) Implicit Cycle-Consistenty  
 :-------------------------:|:-------------------------:
-![](/toy_data/results/l2_results.png)  |  ![](/toy_data/results/A_results.png)
+![width="425"](/toy_data/results/l2_results.png)  |  ![](/toy_data/results/A_results.png)
 
  (c) Explicit Mapping  |  (d) Implicit Mapping
 :-------------------------:|:-------------------------:
