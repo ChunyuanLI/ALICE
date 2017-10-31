@@ -17,7 +17,7 @@ In weakly-supervised learning case, we only have correspondences from 5 pairs of
  <img src="/toy_data/results/toy_data_results.png" width="800px" />
  
     
-One may tune the weighting hyperparameters <img src="https://latex.codecogs.com/gif.latex?$\lambda$" /> for the reconstruction terms for better performance. Note that ALICE reduces to ALI when <img src="https://latex.codecogs.com/gif.latex?$\lambda=0$" />.
+One may tune the weighting hyperparameters <img src="https://latex.codecogs.com/gif.latex?$\lambda$" /> for the reconstruction terms for better performance. Note that ALICE reduces to ALI when the weighting hyperparameters for our CE regularizers are 0.
 
 ## Real datasets
 
