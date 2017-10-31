@@ -16,3 +16,16 @@ In weakly-supervised learning case, we only have correspondences from 5 pairs of
  
     
 One may tune the weighting hyperparameters <img src="https://latex.codecogs.com/gif.latex?$\lambda$" /> for the reconstruction terms for better performance. Note that ALICE reduces to ALI when <img src="https://latex.codecogs.com/gif.latex?$\lambda=0$" />.
+
+
+## Citation
+If you use this code for your research, please cite our [paper](https://junyanz.github.io/CycleGAN/):
+
+```
+@article{li2017alice,
+  title={ALICE: Towards Understanding Adversarial Learning for Joint Distribution Matching},
+  author={Li, Chunyuan and Liu, Hao and Chen, Changyou and Pu, Yunchen and Chen, Liqun and Henao, Ricardo and Carin, Lawrence},
+  journal={Neural Information Processing Systems (NIPS)},
+  year={2017}
+}
+```
