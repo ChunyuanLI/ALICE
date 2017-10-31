@@ -37,6 +37,11 @@ One may tune the weighting hyperparameters of CE regularizers (cycle-consistency
 
 TODO
 ### MNIST
+
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![](/plot_generation/figures/mnist_icp_weighting.png)  |  ![](/plot_generation/figures/mnist_mse_weighting.png)
+
 ### CIFAR
 ### CelebA
 ### Car2Car
