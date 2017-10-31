@@ -32,6 +32,9 @@ One may tune the weighting hyperparameters of CE regularizers (cycle-consistency
 ## Real datasets
 
 TODO
+### MNIST
+### CIFAE
+### CelebA
 
 ## Citation
 If you use this code for your research, please cite our [paper](https://arxiv.org/abs/1709.01215):
