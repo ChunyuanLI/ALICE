@@ -37,12 +37,23 @@ One may tune the weighting hyperparameters of CE regularizers (cycle-consistency
 
 TODO
 ### MNIST
+We study the impact of weighting hyperparameter (\lambda) for CE regularizer. The performance of image generation is evaluated by inception score (ICP), and image reconstruction is evaluted by mean square error (MSE).
 
-Solarized dark             |  Solarized Ocean
+Best ICP=9.279+-0.07, and MSE=0.0803+-0.007, when \lambda=1
+
+Image Generation             |  Image Reconstruction
 :-------------------------:|:-------------------------:
 ![](/plot_generation/figures/mnist_icp_weighting.png)  |  ![](/plot_generation/figures/mnist_mse_weighting.png)
 
 ### CIFAR
+
+Best ICP=6.015+-0.0284, and MSE=0.4155+-0.2015, when \lambda=1e-6. Larger \lambda leads to lower MSE.
+
+Image Generation             |  Image Reconstruction
+:-------------------------:|:-------------------------:
+![](/plot_generation/figures/cifar_icp_weighting.png)  |  ![](/plot_generation/figures/cifar_mse_weighting.png)
+
+
 ### CelebA
 ### Car2Car
 ### Edge2Shoes
