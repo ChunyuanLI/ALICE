@@ -1,17 +1,15 @@
 # ALICE
 Adversarially Learned Inference with Conditional Entropy (**ALICE**)
 
-[ALICE: Towards Understanding Adversarial Learning for Joint Distribution Matching](https://junyanz.github.io/CycleGAN/)  
- [Chunyuan Li](http://chunyuan.li/),  
+[ALICE: Towards Understanding Adversarial Learning for Joint Distribution Matching](https://arxiv.org/abs/1709.01215)  
+ [Chunyuan Li](http://chunyuan.li/),
  [Hao Liu](https://hliu96.github.io/), 
  [Changyou Chen](https://www.cse.buffalo.edu/~changyou/), 
  [Yunchen Pu](https://scholar.google.com/citations?user=ftW7RoAAAAAJ&hl=en), 
  [Liqun Chen](https://scholar.google.com/citations?user=T9T8Il0AAAAJ&hl=en), 
  [Ricardo Henao](https://scholar.google.com/citations?user=p_mm4-YAAAAJ),   
  [Lawrence Carin](http://people.ee.duke.edu/~lcarin/)  
- 
- Duke University
- NIPS, 2017.
+ Duke University. NIPS, 2017.
 
 ## Toy dataset
 
