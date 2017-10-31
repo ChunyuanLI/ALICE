@@ -43,7 +43,7 @@ n_layer_inf = 2
 n_hidden_inf= 256
 
 """ Create directory for results """
-result_dir = 'results/ALICE_A/'
+result_dir = 'results/ALICE_l2_l2/'
 directory = result_dir
 if not os.path.exists(directory):
     os.makedirs(directory)
@@ -69,7 +69,6 @@ gaussian_mixture = GMM_distribution(means=means_x,
                                                priors=priors_x)
 dataset_x = sample_GMM(dataset_size_x, means_x, variances_x, priors_x, sources=('features', ))
 save_path_x = result_dir + 'X_gmm_data_train.pdf'
-# plot_GMM(dataset, save_path)
 
 ##  reconstruced x
 X_dataset  = dataset_x.data['samples']
@@ -85,8 +84,8 @@ plt.savefig(save_path_x, transparent=True, bbox_inches='tight')
 
 
 # create Z dataset
-means_z = map(lambda x:  np.array(x), [[0, 0]])
-# means = map(lambda x:  np.array(x), [[-1, -1],[1, 1]])
+# means_z = map(lambda x:  np.array(x), [[0, 0]])
+means_z = map(lambda x:  np.array(x), [[-1, -1],[1, 1]])
 means_z = list(means_z)
 std_z = 1.0
 variances_z = [np.eye(2) * std_z for _ in means_z]
@@ -109,13 +108,16 @@ ax.axis('on')
 plt.savefig(save_path_z, transparent=True, bbox_inches='tight')
 
 
+""" Paired Data """
+pair_size = 5
+xmb_anchor = np.float32([[0, 0],[1, 1],[-1, -1],[1, -1],[-1, 1]])
+zmb_anchor = -np.float32([[0, 0],[1, 1],[-1, -1],[1, -1],[-1, 1]])  # manually set up inverse corespondences
 
 """ Networks """
 def standard_normal(shape, **kwargs):
     """Create a standard Normal StochasticTensor."""
     return tf.cast(st.StochasticTensor(
         ds.MultivariateNormalDiag(mu=tf.zeros(shape), diag_stdev=tf.ones(shape), **kwargs)),  tf.float32)
-
 
 def generative_network(z, input_dim, n_layer, n_hidden, eps_dim):
     with tf.variable_scope("generative"):
@@ -143,31 +145,14 @@ def data_network(x,z, n_layers=2, n_hidden=256, activation_fn=None):
     return tf.squeeze(log_d, squeeze_dims=[1])
 
 
-def data_network_xx(x,x1, n_layers=2, n_hidden=256, activation_fn=None):
-    """Approximate x log data density."""
-    # pdb.set_trace()
-    h = tf.concat([x,z,x1], 1)
-    with tf.variable_scope('discriminator_xzx'):
-        h = slim.repeat(h, n_layers, slim.fully_connected, n_hidden, activation_fn=tf.nn.relu)
-        log_d = slim.fully_connected(h, 1, activation_fn=activation_fn)
-    return tf.squeeze(log_d, squeeze_dims=[1])
-
-def data_network_zz(z,z1, n_layers=2, n_hidden=256, activation_fn=None):
-    """Approximate x log data density."""
-    # pdb.set_trace()
-    h = tf.concat([z,x,z1], 1)
-    with tf.variable_scope('discriminator_zxz'):
-        h = slim.repeat(h, n_layers, slim.fully_connected, n_hidden, activation_fn=tf.nn.relu)
-        log_d = slim.fully_connected(h, 1, activation_fn=activation_fn)
-    return tf.squeeze(log_d, squeeze_dims=[1])
-
-
 
 """ Construct model and training ops """
 tf.reset_default_graph()
 
 x = tf.placeholder(tf.float32, shape=(batch_size, input_dim))
 z = tf.placeholder(tf.float32, shape=(batch_size, latent_dim))
+x_anchor = tf.placeholder(tf.float32, shape=(pair_size, input_dim))
+z_anchor = tf.placeholder(tf.float32, shape=(pair_size, latent_dim))
 
 # decoder and encoder
 p_x = generative_network(z, input_dim , n_layer_gen, n_hidden_gen, eps_dim)
@@ -179,54 +164,35 @@ encoder_logit = graph_replace(decoder_logit, {p_x: x, z:q_z})
 decoder_loss = tf.nn.sigmoid_cross_entropy_with_logits(labels = tf.zeros_like(decoder_logit), logits=decoder_logit)
 encoder_loss = tf.nn.sigmoid_cross_entropy_with_logits(labels = tf.ones_like(encoder_logit), logits=encoder_logit)
 
-dis_loss_xz = tf.reduce_mean(  encoder_loss ) + tf.reduce_mean( decoder_loss)
+disc_loss = tf.reduce_mean(  encoder_loss ) + tf.reduce_mean( decoder_loss)
 
 rec_z = inference_network(p_x, latent_dim, n_layer_inf, n_hidden_inf, eps_dim )
 rec_x = generative_network(q_z, input_dim , n_layer_gen, n_hidden_gen,  eps_dim )
 
-x_logit_real = data_network_xx(x, x)
-x_logit_fake = data_network_xx(x, rec_x)
-z_logit_real = data_network_zz(z, z)
-z_logit_fake = data_network_zz(z, rec_z)
-
-x_sigmoid_real = tf.nn.sigmoid_cross_entropy_with_logits(logits=x_logit_real, labels=tf.ones_like(x_logit_real))
-x_sigmoid_fake = tf.nn.sigmoid_cross_entropy_with_logits(logits=x_logit_fake, labels=tf.zeros_like(x_logit_fake))
-
-z_sigmoid_real = tf.nn.sigmoid_cross_entropy_with_logits(logits=z_logit_real, labels=tf.ones_like(z_logit_real))
-z_sigmoid_fake = tf.nn.sigmoid_cross_entropy_with_logits(logits=z_logit_fake, labels=tf.zeros_like(z_logit_fake))
-
-x_sigmoid_real2 = tf.nn.sigmoid_cross_entropy_with_logits(logits=x_logit_real, labels=tf.zeros_like(x_logit_real))
-x_sigmoid_fake2 = tf.nn.sigmoid_cross_entropy_with_logits(logits=x_logit_fake, labels=tf.ones_like(x_logit_fake))
-
-z_sigmoid_real2 = tf.nn.sigmoid_cross_entropy_with_logits(logits=z_logit_real, labels=tf.zeros_like(z_logit_real))
-z_sigmoid_fake2 = tf.nn.sigmoid_cross_entropy_with_logits(logits=z_logit_fake, labels=tf.ones_like(z_logit_fake))
-
-
-dis_loss_x = tf.reduce_mean(x_sigmoid_real + x_sigmoid_fake)
-dis_loss_z = tf.reduce_mean(z_sigmoid_real + z_sigmoid_fake)
-disc_loss = dis_loss_xz + dis_loss_x + dis_loss_z
-
-cost_x = tf.reduce_mean(1.0 * x_sigmoid_real2 + 1.0 * x_sigmoid_fake2) # + tf.reduce_mean(tf.pow(x_feature_real - x_feature_fake, 2))
-cost_z = tf.reduce_mean(1.0 * z_sigmoid_real2 + 1.0 * z_sigmoid_fake2) # + tf.reduce_mean(tf.pow(z_feature_real - z_feature_fake, 2))
-
+cost_z = tf.reduce_mean(tf.pow(rec_z - z, 2))
+cost_x = tf.reduce_mean(tf.pow(rec_x - x, 2))
 
 decoder_loss2 = tf.nn.sigmoid_cross_entropy_with_logits(labels = tf.ones_like(decoder_logit), logits=decoder_logit)
 encoder_loss2 = tf.nn.sigmoid_cross_entropy_with_logits(labels = tf.zeros_like(encoder_logit), logits=encoder_logit)
 
 gen_loss_xz = tf.reduce_mean(  decoder_loss2 )  + tf.reduce_mean( encoder_loss2 )
 
-# gen_loss = 1.*gen_loss_xz + .01*cost_x  + .01*cost_z
-gen_loss = 1.*gen_loss_xz + 1.0*cost_x  + 1.0*cost_z
+# pair loss
+a_x = generative_network(z_anchor, input_dim , n_layer_gen, n_hidden_gen, eps_dim)
+cost_pred_x = tf.reduce_mean(tf.pow(a_x - x_anchor, 2))
+
+a_z = inference_network(x_anchor, latent_dim, n_layer_inf, n_hidden_inf, eps_dim)
+cost_pred_z = tf.reduce_mean(tf.pow(a_z - z_anchor, 2))
+
+gen_loss = 1.*gen_loss_xz + 0.1*cost_x  + 0.1*cost_z + 1.*cost_pred_x + 1.*cost_pred_z
 
 qvars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "inference")
 pvars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "generative")
 dvars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "discriminator")
-dvars_xzx = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "discriminator_xzx")
-dvars_zxz = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "discriminator_zxz")
 
 opt = tf.train.AdamOptimizer(1e-3, beta1=0.5)
 train_gen_op =  opt.minimize(gen_loss, var_list=qvars + pvars)
-train_disc_op = opt.minimize(disc_loss, var_list=dvars + dvars_xzx + dvars_zxz)
+train_disc_op = opt.minimize(disc_loss, var_list=dvars)
 
 """ training """
 config = tf.ConfigProto()
@@ -245,9 +211,9 @@ for epoch in tqdm( range(n_epoch), total=n_epoch):
     for xmb, zmb in iter_data(X_dataset, Z_dataset, size=batch_size):
         i = i + 1
         for _ in range(1):
-            f_d, _ = sess.run([disc_loss, train_disc_op], feed_dict={x: xmb, z:zmb})
+            f_d, _ = sess.run([disc_loss, train_disc_op], feed_dict={x: xmb, z:zmb, x_anchor: xmb_anchor, z_anchor: zmb_anchor})
         for _ in range(5):
-            f_g, _ = sess.run([[gen_loss, gen_loss_xz, cost_x, cost_z], train_gen_op], feed_dict={x: xmb, z:zmb})
+            f_g, _ = sess.run([[gen_loss, gen_loss_xz, cost_x, cost_z], train_gen_op], feed_dict={x: xmb, z:zmb, x_anchor: xmb_anchor, z_anchor: zmb_anchor})
 
         FG.append(f_g)
         FD.append(f_d)
@@ -366,3 +332,6 @@ plt.xlabel('Loss')
 ax.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
 ax.axis('on')
 plt.savefig(result_dir + 'learning_curves.pdf', bbox_inches='tight')
+
+
+
