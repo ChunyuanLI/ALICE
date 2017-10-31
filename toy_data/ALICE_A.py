@@ -147,7 +147,7 @@ def data_network_xx(x,x1, n_layers=2, n_hidden=256, activation_fn=None):
     """Approximate x log data density."""
     # pdb.set_trace()
     h = tf.concat([x,x1], 1)
-    with tf.variable_scope('discriminator_xzx'):
+    with tf.variable_scope('discriminator_xx'):
         h = slim.repeat(h, n_layers, slim.fully_connected, n_hidden, activation_fn=tf.nn.relu)
         log_d = slim.fully_connected(h, 1, activation_fn=activation_fn)
     return tf.squeeze(log_d, squeeze_dims=[1])
@@ -156,7 +156,7 @@ def data_network_zz(z,z1, n_layers=2, n_hidden=256, activation_fn=None):
     """Approximate x log data density."""
     # pdb.set_trace()
     h = tf.concat([z,z1], 1)
-    with tf.variable_scope('discriminator_zxz'):
+    with tf.variable_scope('discriminator_zz'):
         h = slim.repeat(h, n_layers, slim.fully_connected, n_hidden, activation_fn=tf.nn.relu)
         log_d = slim.fully_connected(h, 1, activation_fn=activation_fn)
     return tf.squeeze(log_d, squeeze_dims=[1])
@@ -216,17 +216,17 @@ encoder_loss2 = tf.nn.sigmoid_cross_entropy_with_logits(labels = tf.zeros_like(e
 gen_loss_xz = tf.reduce_mean(  decoder_loss2 )  + tf.reduce_mean( encoder_loss2 )
 
 # gen_loss = 1.*gen_loss_xz + .01*cost_x  + .01*cost_z
-gen_loss = 1.*gen_loss_xz + 1.0*cost_x  + 1.0*cost_z
+gen_loss = 1.*gen_loss_xz + 0.1*cost_x  + 0.1*cost_z
 
 qvars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "inference")
 pvars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "generative")
 dvars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "discriminator")
-dvars_xzx = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "discriminator_xzx")
-dvars_zxz = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "discriminator_zxz")
+dvars_xx = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "discriminator_xx")
+dvars_zz = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "discriminator_zz")
 
 opt = tf.train.AdamOptimizer(1e-3, beta1=0.5)
 train_gen_op =  opt.minimize(gen_loss, var_list=qvars + pvars)
-train_disc_op = opt.minimize(disc_loss, var_list=dvars + dvars_xzx + dvars_zxz)
+train_disc_op = opt.minimize(disc_loss, var_list=dvars + dvars_xx + dvars_zz)
 
 """ training """
 config = tf.ConfigProto()
