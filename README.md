@@ -29,6 +29,9 @@ In *weakly-supervised learning* case, the setting of z ~ 2-GMM and x ~ 5-GMM is 
     
 One may tune the weighting hyperparameters of CE regularizers (cycle-consistency and/or supervised mappings) for better performance. Note that ALICE reduces to ALI when the weighting hyperparameters are 0.
 
+## Reproduce figures in the paper
+
+`alice_plots.ipynb`
 
 ## Real datasets
 
