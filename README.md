@@ -13,7 +13,7 @@ Adversarially Learned Inference with Conditional Entropy (**ALICE**)
 
 ## Toy dataset
 
-In unsupervised learning case, z~1-GMM and x~5-GMM is considered, two variants of ALICE are proposed to bound the conditional entropies, inclduing 
+In unsupervised learning case, z ~ 1-GMM and x ~ 5-GMM is considered, two variants of ALICE are proposed to bound the conditional entropies, inclduing 
 
 - (a) Explicitly specified L2-norm cycle-consistency (`ALICE_l2.py`) 
 - (b) Implicitly learned cycle-consistency via adversarial training (`ALICE_A.py`).
