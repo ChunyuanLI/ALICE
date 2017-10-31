@@ -7,7 +7,7 @@ In unsupervised learning case, two variants of ALICE are proposed to bound the c
 
     python ALICE_l2.py
     
-<img src="/results/l2_results.png" data-canonical-src="/results/l2_results.png" width="400" height="250" />
+<img src="/toy_data/results/l2_results.png" data-canonical-src="/toy_data/results/l2_results.png" width="400" height="250" />
     
     
     
@@ -15,7 +15,7 @@ In unsupervised learning case, two variants of ALICE are proposed to bound the c
 
     python ALICE_A.py
  
- <img src="/results/A_results.png" data-canonical-src="/results/A_results.png" width="400" height="250" />
+ <img src="/toy_data/results/A_results.png" data-canonical-src="/toy_data/results/A_results.png" width="400" height="250" />
  
     
 
