@@ -46,7 +46,7 @@ We study the impact of weighting hyperparameter (\lambda) for CE regularizer. Th
 
 Best ICP=9.279+-0.07, and MSE=0.0803+-0.007, when \lambda=1
 
-Note: we pre-trained a "perfect" MNIST classifier (100\% training accuract) to compute the [inception score for MNIST](https://github.com/ChunyuanLI/MNIST_Inception_Score)
+Note: we pre-trained a "perfect" MNIST classifier (100\% training accuracy) to compute the [inception score for MNIST](https://github.com/ChunyuanLI/MNIST_Inception_Score).
 
 Image Generation             |  Image Reconstruction
 :-------------------------:|:-------------------------:
