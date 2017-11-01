@@ -29,7 +29,7 @@ In *weakly-supervised learning* case, the setting of z ~ 2-GMM and x ~ 5-GMM is 
 
  (c) Explicit Mapping  |  (d) Implicit Mapping
 :-------------------------:|:-------------------------:
-![](/toy_data/results/l2_l2_results.png)  |  ![](/toy_data/results/A_A_results.png)
+![](/toy_data/results/l2_l2_results.png)|![](/toy_data/results/A_A_results.png)
  
     
 One may tune the weighting hyperparameters of CE regularizers (cycle-consistency and/or supervised mappings) for better performance. Note that ALICE reduces to ALI when the weighting hyperparameters are 0.
