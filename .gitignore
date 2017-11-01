@@ -2,7 +2,7 @@
 *.pptx
 .DS_Store
 *.pyc
-./plot_generation/.ipynb_checkpoints
+./plot_generation/.ipynb_checkpoints/
 ./plot_generation/figures
 ./toy_data/utils_toy/*.pyc
 ./toy_data/utils_toy/__pycache__
