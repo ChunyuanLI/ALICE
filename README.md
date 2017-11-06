@@ -15,7 +15,7 @@ Adversarially Learned Inference with Conditional Entropy (**ALICE**)
 
 *[Alice4Alice](https://github.com/ChunyuanLI/Alice4Alice): ALICE algorithms for painting the cartoon of Alice's Adventures in Wonderland*
 
-## Four variants of ALICE on toy dataset
+## Four variants of ALICE on toy datasets
 In *unsupervised learning* case: 
 
 - (a) Explicit cycle-consistency ([`ALICE_l2.py`](/toy_data/ALICE_l2.py)) 
@@ -32,7 +32,6 @@ In *weakly-supervised learning* case:
 
 ## Real datasets
 
-TODO
 ### MNIST
 We study the impact of weighting hyperparameter (\lambda) for CE regularizer. The performance of image generation is evaluated by **inception score (ICP)**, and image reconstruction is evaluted by **mean square error (MSE)**.
 
