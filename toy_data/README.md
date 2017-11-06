@@ -1,6 +1,6 @@
 ## Toy dataset
 
-### Impact of CE regularized
+### Impact of Cthe E regularizer
 
 Best ICP=4.595 ± 0.604, and MSE=0.022 ± 0.029, when \lambda=1
 
@@ -10,6 +10,7 @@ Image Generation             |  Image Reconstruction
 :-------------------------:|:-------------------------:
 ![](/plot_generation/figures/toy_icp_weighting.png)  |  ![](/plot_generation/figures/toy_mse_weighting.png)
 
+----
 
 ### Four algorithms
 
