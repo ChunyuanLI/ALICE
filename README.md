@@ -11,28 +11,16 @@ Adversarially Learned Inference with Conditional Entropy (**ALICE**)
  [Lawrence Carin](http://people.ee.duke.edu/~lcarin/)  
  Duke University. NIPS, 2017.
 
-## Toy dataset
+## Four variants of ALICE on toy dataset
+In *unsupervised learning* case: 
 
-In *unsupervised learning* case, the setting of z ~ 1-GMM and x ~ 5-GMM is considered, two variants of ALICE are proposed to bound the conditional entropies, inclduing 
+- (a) Explicit cycle-consistency ([`ALICE_l2.py`](/toy_data/ALICE_l2.py)) 
+- (b) Implicit cycle-consistency ([`ALICE_A.py`](/toy_data/ALICE_A.py))
 
-- (a) Explicitly specified L2-norm cycle-consistency ([`ALICE_l2.py`](/toy_data/ALICE_l2.py)) 
-- (b) Implicitly learned cycle-consistency via adversarial training ([`ALICE_A.py`](/toy_data/ALICE_A.py))
+In *weakly-supervised learning* case:
 
-In *weakly-supervised learning* case, the setting of z ~ 2-GMM and x ~ 5-GMM is considered, we only provide correspondences from 5 pairs of (x,z) of inverse spatial location relation. Two variants of ALICE are proposed to leverage the supervised information, including 
-
-- (c) Explicitly specified L2-norm mapping  ([`ALICE_l2_l2.py`](/toy_data/ALICE_l2_l2.py)) 
-- (d) Implicitly learned mapping via adversarial training ([`ALICE_A_A.py`](/toy_data/ALICE_A_A.py)) 
-
- (a) Explicit Cycle-Consistenty  |  (b) Implicit Cycle-Consistenty  
-:-------------------------:|:-------------------------:
-![width="425"](/toy_data/results/l2_results.png)|![width="425"](/toy_data/results/A_results.png)
-
- (c) Explicit Mapping  |  (d) Implicit Mapping
-:-------------------------:|:-------------------------:
-![](/toy_data/results/l2_l2_results.png)|![](/toy_data/results/A_A_results.png)
- 
-    
-One may tune the weighting hyperparameters of CE regularizers (cycle-consistency and/or supervised mappings) for better performance. Note that ALICE reduces to ALI when the weighting hyperparameters are 0.
+- (c) Explicit Cycle-Consistenty  ([`ALICE_l2_l2.py`](/toy_data/ALICE_l2_l2.py)) 
+- (d) Implicit Cycle-Consistenty  ([`ALICE_A_A.py`](/toy_data/ALICE_A_A.py)) 
 
 ## Reproduce figures in the paper
 
