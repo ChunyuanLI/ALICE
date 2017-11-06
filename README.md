@@ -19,8 +19,8 @@ In *unsupervised learning* case:
 
 In *weakly-supervised learning* case:
 
-- (c) Explicit Cycle-Consistenty  ([`ALICE_l2_l2.py`](/toy_data/ALICE_l2_l2.py)) 
-- (d) Implicit Cycle-Consistenty  ([`ALICE_A_A.py`](/toy_data/ALICE_A_A.py)) 
+- (c) Explicit mapping  ([`ALICE_l2_l2.py`](/toy_data/ALICE_l2_l2.py)) 
+- (d) Implicit mapping  ([`ALICE_A_A.py`](/toy_data/ALICE_A_A.py)) 
 
 ## Reproduce figures in the paper
 
