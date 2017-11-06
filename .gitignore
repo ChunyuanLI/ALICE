@@ -2,6 +2,8 @@
 *.pptx
 .DS_Store
 *.pyc
+plot_generation/figures_alice/gif/
+plot_generation/figures_alice/gif_logo/
 plot_generation/.ipynb_checkpoints/
 plot_generation/figures/
 plot_generation/images/
