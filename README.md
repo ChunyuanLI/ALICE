@@ -47,7 +47,7 @@ Image Generation             |  Image Reconstruction
 
 Best ICP=6.015 ± 0.0284, and MSE=0.4155 ± 0.2015, when \lambda=1e-6. Larger \lambda leads to lower MSE.
 
-Note: The quality of generated cifar images is evaluated via the [inception score based on ImageNet](https://github.com/openai/improved-gan/tree/master/inception_score)
+Note: The quality of generated cifar images is evaluated via the [inception score based on ImageNet](https://github.com/openai/improved-gan/tree/master/inception_score).
 
 Image Generation             |  Image Reconstruction
 :-------------------------:|:-------------------------:
