@@ -11,7 +11,7 @@ Adversarially Learned Inference with Conditional Entropy (**ALICE**)
  [Lawrence Carin](http://people.ee.duke.edu/~lcarin/)  
  Duke University. NIPS, 2017.
 
-![](/plot_generation/figures/alice_log_movie.gif)) 
+![](/plot_generation/figures_alice/alice_log_movie.gif)
 
 
 ## Four variants of ALICE on toy dataset
