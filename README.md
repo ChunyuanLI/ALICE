@@ -13,6 +13,7 @@ Adversarially Learned Inference with Conditional Entropy (**ALICE**)
 
 ![](/plot_generation/figures_alice/alice_log_movie.gif)
 
+*Alice4Alice: ALICE algorithms for painting the cartton of Alice's Adventures in Wonderland*
 
 ## Four variants of ALICE on toy dataset
 In *unsupervised learning* case: 
