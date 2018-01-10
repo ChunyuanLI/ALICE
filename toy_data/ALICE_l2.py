@@ -178,12 +178,10 @@ gen_loss = 1.*gen_loss_xz + 1.0*cost_x  + 1.0*cost_z
 qvars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "inference")
 pvars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "generative")
 dvars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "discriminator")
-dvars_xzx = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "discriminator_xzx")
-dvars_zxz = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, "discriminator_zxz")
 
 opt = tf.train.AdamOptimizer(1e-3, beta1=0.5)
 train_gen_op =  opt.minimize(gen_loss, var_list=qvars + pvars)
-train_disc_op = opt.minimize(disc_loss, var_list=dvars + dvars_xzx + dvars_zxz)
+train_disc_op = opt.minimize(disc_loss, var_list=dvars)
 
 """ training """
 config = tf.ConfigProto()
